@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<section class="container-fluid">
+    <div class="card p-5">
+        <div class="card-header text-center">
+            <h3>แก้ไข</h3>    
+        </div>
+        <div class="card-body">
+            
+                <form method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        {% csrf_token %}
+                        <div>
+                            <label for="">id: </label>
+                            <input type="text" value="{{form.instance.id}}" name="id" id="id_id" readonly>
+                        </div>
+                        <div>
+                            <label for="">name: </label>
+                            {{form.name}}
+                        </div>
+                        <div>
+                            <label for="age">Age:</label>
+                            {{ form.age }}
+                        </div>
+                        <div>
+                            <label for="age">Gender:</label>
+                            {{ form.gender}}    
+                        </div>
+                        <div>
+                            <label for="age"> Image:</label>
+                            {{ form.image }}
+                        </div> 
+                    </div>
+                    <div class="mb-3 text-center">
+                        <button type="submit" class="btn btn-warning">แก้ไข</button>
+                        <a href="{% url 'home' %}">ยกเลิก</a>
+                    </div>
+                </form>
+           
+        </div>
+    </div>
+</section>
+<script>
+    window.addEventListener('load', function() {
+        const id = document.getElementById('id_id')
+        const name = document.getElementById('id_name')
+        const age = document.getElementById('id_age')
+        const gender = document.getElementById('id_gender')
+        const img = document.getElementById('id_image')
+
+        id.classList.add('form-control')
+        name.classList.add('form-control')
+        age.classList.add('form-control')
+        gender.classList.add('form-control')
+        img.classList.add('form-control')
+    });
+
+</script>
+{% endblock %}
